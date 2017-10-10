@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HelloActivity</string>
+    <string name="greeting">Hello GeekBrains!</string> <!-- Добавленная строка -->
 </resources>
