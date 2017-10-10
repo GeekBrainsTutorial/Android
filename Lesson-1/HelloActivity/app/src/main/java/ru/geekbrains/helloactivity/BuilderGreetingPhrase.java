@@ -25,10 +25,10 @@ public class BuilderGreetingPhrase {
         if (5 <= currentHour && currentHour < 12 ){         // Если утро
             return String.format("%s %s!", greetingPhrases.getMorning(), helloer);
         }
-        else if (12 <= currentHour && currentHour < 6){     // Если день
+        else if (12 <= currentHour && currentHour < 18){     // Если день
             return String.format("%s %s!", greetingPhrases.getAfternoon(), helloer);
         }
-        else if (6 <= currentHour && currentHour < 9){      // Если вечер
+        else if (18 <= currentHour && currentHour < 21){      // Если вечер
             return String.format("%s %s!", greetingPhrases.getEvening(), helloer);
         }
         else {                                              // Если поздний вечер или ночь
