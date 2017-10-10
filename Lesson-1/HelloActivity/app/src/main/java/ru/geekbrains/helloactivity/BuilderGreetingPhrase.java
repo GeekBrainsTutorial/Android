@@ -10,7 +10,12 @@ public class BuilderGreetingPhrase {
 
     // Конструктор, здесь передадим ресурсы из активити и получим текущий час
     public BuilderGreetingPhrase(GreetingStrings greetingPhrases){
-        currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        this(greetingPhrases, Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+    }
+
+    // Конструктор для тестирования
+    BuilderGreetingPhrase(GreetingStrings greetingPhrases, int hour){
+        currentHour = hour;
         this.greetingPhrases = greetingPhrases;
     }
 
