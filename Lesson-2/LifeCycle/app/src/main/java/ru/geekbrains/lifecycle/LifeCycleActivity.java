@@ -9,13 +9,11 @@ import android.widget.Toast;
 
 public class LifeCycleActivity extends AppCompatActivity {
 
-    private int counter = 0;    // Счетчик
-    private TextView textCounter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life_cycle);
+
         String instanceState;
         if (savedInstanceState == null){
             instanceState = "Первый запуск!";
@@ -24,14 +22,15 @@ public class LifeCycleActivity extends AppCompatActivity {
             instanceState = "Повторный запуск!";
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
-        textCounter = (TextView) findViewById(R.id.textCounter);    // Поле
-        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик в поле
+        final TextView textCounter = (TextView) findViewById(R.id.textCounter);     // Текст
+        final LifeCyclePresenter presenter = LifeCyclePresenter.getInstance();      // Получить презеентер
+        textCounter.setText(((Integer)presenter.getCounter()).toString());          // Выводим счетчик в поле
         Button button = (Button) findViewById(R.id.button);         // Кнопка
         button.setOnClickListener(new View.OnClickListener() {      // Обработка нажатий
             @Override
             public void onClick(View v) {
-                counter++;
-                textCounter.setText(((Integer)counter).toString());
+                presenter.incrementCounter();   // Увеличиваем счетчик на единицу
+                textCounter.setText(((Integer)presenter.getCounter()).toString());  // Выводим счетчик в поле
             }
         });
     }
@@ -46,8 +45,6 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-        counter = saveInstanceState.getInt("Counter");              // Востанавливаем счетчик
-        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик в поле
     }
 
     @Override
@@ -66,7 +63,6 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle saveInstanceState){
         super.onSaveInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-        saveInstanceState.putInt("Counter", counter);               // Сохраняем счетчик
     }
 
     @Override
