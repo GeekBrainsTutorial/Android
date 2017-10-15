@@ -46,6 +46,8 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
+        counter = saveInstanceState.getInt("Counter");              // Востанавливаем счетчик
+        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик в поле
     }
 
     @Override
@@ -64,6 +66,7 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle saveInstanceState){
         super.onSaveInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
+        saveInstanceState.putInt("Counter", counter);               // Сохраняем счетчик
     }
 
     @Override
