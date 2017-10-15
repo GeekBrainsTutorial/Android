@@ -2,9 +2,15 @@ package ru.geekbrains.lifecycle;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LifeCycleActivity extends AppCompatActivity {
+
+    private int counter = 0;    // Счетчик
+    private TextView textCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,16 @@ public class LifeCycleActivity extends AppCompatActivity {
             instanceState = "Повторный запуск!";
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
+        textCounter = (TextView) findViewById(R.id.textCounter);    // Поле
+        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик в поле
+        Button button = (Button) findViewById(R.id.button);         // Кнопка
+        button.setOnClickListener(new View.OnClickListener() {      // Обработка нажатий
+            @Override
+            public void onClick(View v) {
+                counter++;
+                textCounter.setText(((Integer)counter).toString());
+            }
+        });
     }
 
     @Override
