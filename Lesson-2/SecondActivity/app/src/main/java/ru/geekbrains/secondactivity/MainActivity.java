@@ -1,10 +1,7 @@
 package ru.geekbrains.secondactivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -16,14 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toast.makeText(getApplicationContext(),"Main - onCreate()", Toast.LENGTH_SHORT).show();
         Button button = (Button) findViewById(R.id.button);     // Кнопка
-        final Activity that = this;                             // Для создания интента
-        button.setOnClickListener(new View.OnClickListener() {  // Обработка нажатий
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(that, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+        button.setOnClickListener(new StartSecondActivity(this));   // Обработка нажатий
     }
 
     @Override
