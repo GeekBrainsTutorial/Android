@@ -3,7 +3,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "ru.geekbrains.gradletrain"
-        minSdkVersion 18
+        minSdkVersion MIN_SDK_VERSION
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
