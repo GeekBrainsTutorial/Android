@@ -1,9 +1,9 @@
 package ru.geekbrains.gradletrain;
 
-import android.support.v7.app.AppCompatActivity;
+import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends LifecycleActivity { // LifecycleActivity приехало из внешней библиотеки
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
