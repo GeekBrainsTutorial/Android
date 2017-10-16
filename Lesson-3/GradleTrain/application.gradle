@@ -1,12 +1,16 @@
+apply from: "../config.gradle"
+
+def configuration = ext.configuration;
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    compileSdkVersion configuration.compileSdkVersion
+    buildToolsVersion configuration.buildToolsVersion
     defaultConfig {
-        applicationId "ru.geekbrains.gradletrain"
-        minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        applicationId configuration.applicationId
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode buildVersionCode()
+        versionName buildVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

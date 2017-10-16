@@ -1,0 +1,20 @@
+ext.configuration = [
+        applicationId               : "ru.geekbrains.gradletrain",
+        versionMajor                : 2,
+        versionMinor                : 2,
+        versionPatch                : 3,
+        minSdkVersion               : 18,
+        compileSdkVersion           : 25,
+        targetSdkVersion            : 25,
+        buildToolsVersion           : "26.0.1"
+]
+
+def configuration = ext.configuration;
+
+ext.buildVersionCode = {
+    return configuration.versionMajor * 100 + configuration.versionMinor * 10 + configuration.versionPatch
+}
+
+ext.buildVersionName = {
+    return configuration.versionMajor.toString() + "." + configuration.versionMinor.toString() + "." + configuration.versionPatch
+}
