@@ -13,10 +13,21 @@ android {
         versionName buildVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../HelloApp.jsk.jks")
+            storePassword "MySuperPassword1"
+            keyAlias "key0"
+            keyPassword "SuperPassword2"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
 }
