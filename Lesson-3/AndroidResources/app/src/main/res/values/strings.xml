@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidResources</string>
+    <string name="hello">Hello GeekBrains!</string>
+</resources>
