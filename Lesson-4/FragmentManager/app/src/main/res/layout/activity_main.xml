@@ -7,10 +7,12 @@
     tools:context="ru.geekbrains.fragmentmanager.MainActivity">
 
     <LinearLayout
-        android:layout_width="344dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
         <TableLayout
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_weight="0.5">
@@ -81,6 +83,14 @@
                 </LinearLayout>
             </TableRow>
         </TableLayout>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Назад" />
+
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_weight="2" android:layout_width="match_parent"

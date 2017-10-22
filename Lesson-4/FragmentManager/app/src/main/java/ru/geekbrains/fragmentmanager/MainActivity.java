@@ -1,6 +1,7 @@
 package ru.geekbrains.fragmentmanager;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
         replace2.setOnClickListener(new ListenerOnReplace(fragment2));
         Button replace3 = (Button)findViewById(R.id.replace3);
         replace3.setOnClickListener(new ListenerOnReplace(fragment3));
+
+        // Обработка нашей кнопки "Назад"
+        Button back = (Button)findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+            }
+        });
     }
 
     // при написании анонимного класса слушателя на кнопку, было замечено, что при этом возникает
