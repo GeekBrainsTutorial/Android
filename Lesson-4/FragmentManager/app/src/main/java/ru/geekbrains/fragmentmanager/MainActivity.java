@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             // добавить фрагмент
             fragmentTransaction.add(R.id.fragment_container, fragment);
+            fragmentTransaction.addToBackStack("");
             // закрыть транзакцию
             fragmentTransaction.commit();
         }
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         private void removeFragment(){
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.remove(fragment);
+            fragmentTransaction.addToBackStack("");
             fragmentTransaction.commit();
         }
     }
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         private void replaceFragment(){
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.addToBackStack("");
             fragmentTransaction.commit();
         }
     }
