@@ -26,6 +26,8 @@ public class TimerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
+        setRetainInstance(true);
+        
         // Определение полей вывода
         textHour = (TextView)view.findViewById(R.id.textHour);
         textMinute = (TextView)view.findViewById(R.id.textMinute);
