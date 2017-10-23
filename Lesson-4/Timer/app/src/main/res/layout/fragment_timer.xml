@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.geekbrains.timer.TimerFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textHour" style="@style/TimerText"
+            android:layout_alignParentStart="true" android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp" android:layout_marginTop="80dp"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/textHourSeparatorMinute" style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textHour"
+            android:layout_alignBottom="@+id/textHour"
+            android:layout_marginLeft="0dp" android:layout_toEndOf="@+id/textHour"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/textMinuteSeparatorSecond" style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textMinute"
+            android:layout_alignBottom="@+id/textMinute"
+            android:layout_marginLeft="0dp" android:layout_toEndOf="@+id/textMinute"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/textMinute" style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textHourSeparatorMinute"
+            android:layout_alignBottom="@+id/textHourSeparatorMinute"
+            android:layout_marginLeft="0dp" android:layout_toEndOf="@+id/textHourSeparatorMinute"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/textSecond" style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textMinuteSeparatorSecond"
+            android:layout_alignBottom="@+id/textMinuteSeparatorSecond"
+            android:layout_toEndOf="@+id/textMinuteSeparatorSecond" android:text="00" />
+
+        <TextView
+            android:id="@+id/textSecondSeparatorMilli"
+            style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textSecond"
+            android:layout_alignBottom="@+id/textSecond"
+            android:layout_toEndOf="@+id/textSecond"
+            android:text="." />
+
+        <TextView
+            android:id="@+id/textDecsecond" style="@style/TimerText"
+            android:layout_alignBaseline="@+id/textSecondSeparatorMilli"
+            android:layout_alignBottom="@+id/textSecondSeparatorMilli"
+            android:layout_toEndOf="@+id/textSecondSeparatorMilli"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:layout_below="@+id/textHour" android:layout_alignStart="@+id/textHour"
+            android:layout_marginTop="63dp" />
+
+        <Button
+            android:id="@+id/buttonStop"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:layout_alignBaseline="@+id/buttonStart"
+            android:layout_alignBottom="@+id/buttonStart"
+            android:layout_toStartOf="@+id/buttonReset" android:layout_marginEnd="48dp" />
+
+        <Button
+            android:id="@+id/buttonReset"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textDecsecond" android:layout_alignTop="@+id/buttonStop"
+            android:text="@string/reset" />
+    </RelativeLayout>
+</FrameLayout>
