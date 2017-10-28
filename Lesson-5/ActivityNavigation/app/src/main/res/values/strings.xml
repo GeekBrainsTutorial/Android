@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ActivityNavigation</string>
+    <string name="forward">Вперед</string>
+    <string name="ball">Шар</string>
+    <string name="star">Звезда</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="second_activity">Вторая активити</string>
+</resources>
