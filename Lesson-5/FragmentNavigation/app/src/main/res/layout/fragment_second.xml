@@ -1,0 +1,19 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:text="@string/second_activity" />
+
+    <TextView
+        android:id="@+id/textShape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:text="@string/ball" />
+</LinearLayout>
