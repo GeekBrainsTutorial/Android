@@ -10,18 +10,39 @@ import android.widget.TextView;
 // адаптер
 public class SocnetAdapter extends RecyclerView.Adapter<SocnetAdapter.ViewHolder> {
     private String[] data;
+    private OnItemClickListener itemClickListener;  // Слушатель, будет устанавливаться извне
 
     // этот класс хранит связь между данными и элементами View
     // Сложные данные могут потребовать несколько View на
     // Один пункт списка.
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         // Каждый пункт списка в нашем случае это строка.
         public TextView textView;
 
         public ViewHolder(TextView v) {
             super(v);
             textView = v;
+
+            // обработчик нажатий на этом ViewHolder
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (itemClickListener != null) {
+                        itemClickListener.onItemClick(v, getAdapterPosition());
+                    }
+                }
+            });
         }
+    }
+
+    // интерфейс для обработки нажатий как в ListView
+    public interface OnItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
+    // сеттер слушателя нажатий
+    public void SetOnItemClickListener(OnItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
     }
 
     // Передаем в конструктор источник данных
