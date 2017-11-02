@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="descriptions">
+        <item>Зеленый лес</item>
+        <item>Гора</item>
+        <item>Водопад</item>
+        <item>Небо</item>
+        <item>Туман</item>
+        <item>Поляна</item>
+        <item>Осень</item>
+    </string-array>
+    <array name="pictures">
+        <item>@drawable/nature1</item>
+        <item>@drawable/nature2</item>
+        <item>@drawable/nature3</item>
+        <item>@drawable/nature4</item>
+        <item>@drawable/nature5</item>
+        <item>@drawable/nature6</item>
+        <item>@drawable/nature7</item>
+    </array>
+</resources>

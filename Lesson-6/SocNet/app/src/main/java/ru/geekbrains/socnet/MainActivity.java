@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        // строим источник данных
+        DataSourceBuilder builder = new DataSourceBuilder(getResources());
         // установим адаптер
-        SocnetAdapter adapter = new SocnetAdapter(data);
+        SocnetAdapter adapter = new SocnetAdapter(builder.build());
         recyclerView.setAdapter(adapter);
 
         final Activity that = this;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.SetOnItemClickListener(new SocnetAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(that, String.format("%s - %d", ((TextView)view).getText(), position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(that, String.format("Позиция - %d", position), Toast.LENGTH_SHORT).show();
             }
         });
     }
