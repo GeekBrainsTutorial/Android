@@ -4,6 +4,7 @@ package ru.geekbrains.socnet;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
+        // установим аниматор по умолчанию
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         // эта установка служит для повышения производительности системы.
         recyclerView.setHasFixedSize(true);
 
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         // установим адаптер
         SocnetAdapter adapter = new SocnetAdapter(builder.build());
         recyclerView.setAdapter(adapter);
+
+
 
         final Activity that = this;
         // установить слушателя

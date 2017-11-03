@@ -20,7 +20,7 @@ public class SocnetAdapter extends RecyclerView.Adapter<SocnetAdapter.ViewHolder
     // Сложные данные могут потребовать несколько View на
     // Один пункт списка.
     public class ViewHolder extends RecyclerView.ViewHolder {
-        
+
         public TextView description;
         public ImageView picture;
         public CheckBox like;
@@ -38,6 +38,13 @@ public class SocnetAdapter extends RecyclerView.Adapter<SocnetAdapter.ViewHolder
                     if (itemClickListener != null) {
                         itemClickListener.onItemClick(v, getAdapterPosition());
                     }
+                }
+            });
+
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notifyItemChanged(getAdapterPosition());
                 }
             });
         }
