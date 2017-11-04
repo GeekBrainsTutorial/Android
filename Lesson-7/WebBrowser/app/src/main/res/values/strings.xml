@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WebBrowser</string>
+    <string name="ok">OK</string>
+    <string name="homepage">http://worldweather.wmo.int/ru/home.html</string>
+</resources>
