@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        tools:context="ru.geekbrains.sharedprefs.MainActivity">
+
+        <TextView
+            android:id="@+id/headerKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ключ" />
+
+        <TextView
+            android:id="@+id/headerValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Значение" />
+
+        <!-- первый ключ, можно также менять наименование ключей -->
+        <EditText
+            android:id="@+id/editKey1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="key1" />
+
+        <!--  значение первого ключа, строковый параметр -->
+        <EditText
+            android:id="@+id/editValue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="value" />
+
+        <!-- второй ключ -->
+        <EditText
+            android:id="@+id/editKey2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="key2" />
+
+        <!--  значение второго ключа, целочисленый параметр -->
+        <EditText
+            android:id="@+id/editValue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Имя настроек" />
+
+        <!-- имя файла настроек -->
+        <EditText
+            android:id="@+id/editPrefName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="preference" />
+
+        <!-- сохранить с именем по умолчанию (имя-активити) -->
+        <Button
+            android:id="@+id/savePrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сохранить без имени" />
+
+        <!-- сохранить с именем по значению поля "имя файла настроек" -->
+        <Button
+            android:id="@+id/saveSharedPrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сохранить по имени" />
+
+        <!-- восстановить по имени -->
+        <Button
+            android:id="@+id/loadPrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Загрузить без имени" />
+
+        <Button
+            android:id="@+id/loadSharedPrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Загрузить по имени" />
+
+    </GridLayout>
+</ScrollView>
