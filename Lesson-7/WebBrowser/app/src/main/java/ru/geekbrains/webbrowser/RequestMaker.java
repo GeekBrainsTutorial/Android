@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
 
 // Делатель запросов (класс умеющий запрашивать страницы)
 public class RequestMaker {
@@ -60,10 +60,10 @@ public class RequestMaker {
 
         // Сама обработка загрузкти страницы
         private String getResourceUri(String uri) {
-            HttpURLConnection urlConnection = null;
+            HttpsURLConnection urlConnection = null;
             try {
                 URL url = new URL(uri); // Указать адрес URI
-                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection = (HttpsURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET"); // установка метода получения данных -GET
                 urlConnection.setReadTimeout(10000); // установка таймаута - 10 000 миллисекунд
                 publishProgress("Подготовка данных"); // обновим прогресс
