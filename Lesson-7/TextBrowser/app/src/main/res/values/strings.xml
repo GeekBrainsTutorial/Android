@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TextBrowser</string>
+    <string name="home">https://geekbrains.ru/</string>
+    <string name="ok">ok</string>
+</resources>
