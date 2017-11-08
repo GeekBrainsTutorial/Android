@@ -1,5 +1,6 @@
 package ru.geekbrains.okhttp;
 
+import android.os.Handler;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -26,12 +27,21 @@ public class OkHttpRequester {
 
         Call call = client.newCall(request);            // Ставим запрос в очередь
         call.enqueue(new Callback() {
+            // этот хандлер нужен для синхронизации потоков, если его сконструировать
+            // он запомнит поток и в дальнейшем будет с ним синхронизироваться
+            final Handler handler = new Handler();
 
             // Это срабатывает по приходу ответа от сервера
             public void onResponse(Call call, Response response)
                     throws IOException {
-                String answer = response.body().string();
-                listener.onCompleted(answer);               // вызовем наш метод обратного вызова
+                final String answer = response.body().string();
+                // синхронизируем поток с потоком UI
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.onCompleted(answer); // вызовем наш метод обратного вызова
+                    }
+                });
             }
 
             // При сбое
