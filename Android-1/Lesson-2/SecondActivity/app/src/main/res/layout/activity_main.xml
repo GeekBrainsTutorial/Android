@@ -44,6 +44,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="number"
+        android:text="0"
         app:layout_constraintStart_toStartOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
