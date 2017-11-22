@@ -3,7 +3,9 @@ package ru.geekbrains.secondactivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+import static ru.geekbrains.secondactivity.StartSecondActivity.TEXT;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -11,6 +13,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        String text = getIntent().getExtras().getString(TEXT); // получить данные из Intent
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(text); // Сохранить их в TextView
         Toast.makeText(getApplicationContext(),"Second - onCreate()", Toast.LENGTH_SHORT).show();
     }
 

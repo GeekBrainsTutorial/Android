@@ -23,4 +23,16 @@
         android:onClick="onClick"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="6dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="211dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonBack" />
 </android.support.constraint.ConstraintLayout>
