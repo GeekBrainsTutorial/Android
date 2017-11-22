@@ -1,5 +1,7 @@
 package ru.geekbrains.secondactivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -61,6 +63,10 @@ public class SecondActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonBack:
+                EditText editText = (EditText) findViewById(R.id.editText3);
+                Intent intentResult = new Intent();
+                intentResult.putExtra("Number", editText.getText().toString());
+                setResult(Activity.RESULT_OK, intentResult);
                 finish();
                 break;
             default:

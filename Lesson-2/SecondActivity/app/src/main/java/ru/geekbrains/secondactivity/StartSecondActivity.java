@@ -24,6 +24,6 @@ public class StartSecondActivity implements View.OnClickListener {
         // Посылка сформирована, отправляем
         Intent intent = new Intent(sourceActivity, SecondActivity.class);
         intent.putExtra(TEXT, parcel);    // Отправляем посылку
-        sourceActivity.startActivity(intent);
+        sourceActivity.startActivityForResult(intent, 1);
     }
 }
