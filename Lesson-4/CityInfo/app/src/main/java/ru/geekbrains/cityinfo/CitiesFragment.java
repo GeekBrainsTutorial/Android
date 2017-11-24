@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import static ru.geekbrains.cityinfo.CoatOfArmsFragment.PARCEL;
 
 // Фрагмент выбора города из списка
 public class CitiesFragment extends ListFragment {
 
     boolean isExistCoatofarms;  // Можно ли расположить рядом фрагмент с гербом
-    int currentPosition = 0;    // Текущая позиция (выбранный город)
+    Parcel currentParcel;
 
     // При создании фрагмента, укажем его макет
     @Override
@@ -46,13 +49,16 @@ public class CitiesFragment extends ListFragment {
         // Если это не повторное создание, то восстановим текущую позицию
         if (savedInstanceState != null) {
             // Restore last state for checked position.
-            currentPosition = savedInstanceState.getInt("CurrentCity", 0);
+            currentParcel = (Parcel) savedInstanceState.getSerializable("CurrentCity");
+        }
+        else {
+            currentParcel = new Parcel(0, getResources().getTextArray(R.array.Cities)[0].toString());
         }
 
         // Если можно нарисовать рядом герб, то сделаем это
         if (isExistCoatofarms){
             getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-            showCoatOfArms();
+            showCoatOfArms(currentParcel);
         }
     }
 
@@ -60,34 +66,36 @@ public class CitiesFragment extends ListFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("CurrentCity", currentPosition);
+        outState.putSerializable("CurrentCity", currentParcel);
     }
 
     // Обработка выбора позиции
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        currentPosition = position;
-        showCoatOfArms();
+        TextView cityNameView = (TextView) v;
+        currentParcel =  new Parcel(position, cityNameView.getText().toString());
+        showCoatOfArms(currentParcel);
     }
 
     // Показать герб. Ecли возможно, то показать рядом со списком,
     // если нет, то открыть второе активити
-    private void showCoatOfArms() {
+    private void showCoatOfArms(Parcel parcel) {
         if (isExistCoatofarms) {
             // Выделим текущий элемент списка
-            getListView().setItemChecked(currentPosition, true);
+            getListView().setItemChecked( parcel.getImageIndex(), true);
 
             // Проверим, что фрагмент с гербом существует в активити
             CoatOfArmsFragment detail = (CoatOfArmsFragment)
                     getFragmentManager().findFragmentById(R.id.coat_of_arms);
             // если есть необходимость, то выведем герб
-            if (detail == null || detail.getIndex() != currentPosition) {
+            if (detail == null || detail.getParcel().getImageIndex() != parcel.getImageIndex()) {
+
                 // Создаем новый фрагмент, с текущей позицией, для вывода герба
-                detail = CoatOfArmsFragment.create(currentPosition);
+                detail = CoatOfArmsFragment.create(parcel);
 
                 // Выполняем транзакцию по замене фрагмента
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.coat_of_arms, detail);  // замена фрашмента
+                ft.replace(R.id.coat_of_arms, detail);  // замена фраuмента
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
             }
@@ -98,7 +106,7 @@ public class CitiesFragment extends ListFragment {
             Intent intent = new Intent();
             intent.setClass(getActivity(), CoatOfArmsActivity.class);
             // и передадим туда параметры
-            intent.putExtra("index", currentPosition);
+            intent.putExtra(PARCEL, parcel);
             startActivity(intent);
         }
     }
