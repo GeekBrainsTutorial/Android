@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.geekbrains.constraintlayout.MainActivity">
+
+    <!-- app:layout_constraintTop_toTopOf="parent" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top_toTopOf"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- app:layout_constraintLeft_toRightOf="@+id/text1" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left_toRightOf"
+        app:layout_constraintLeft_toRightOf="@+id/text1"/>
+
+    <!-- android:layout_marginTop="20dp"
+         app:layout_constraintTop_toBottomOf="@id/text1" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top_toBottomOf With Margin"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+    <!-- Gone element -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gone"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/text3"/>
+
+    <!-- app:layout_goneMarginLeft="20dp"
+         app:layout_constraintTop_toBottomOf="@id/text4" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top_toBottomOf Gone"
+        app:layout_goneMarginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@id/text4"/>
+
+    <!-- app:layout_constraintBaseline_toBaselineOf="@id/text5" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BaseLine"
+        app:layout_constraintBaseline_toBaselineOf="@id/text5"
+        app:layout_constraintLeft_toRightOf="@id/text5"/>
+
+    <!-- center
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:text="Center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text6" />
+
+    <!-- center and bias
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.169"
+         app:layout_constraintStart_toStartOf="parent" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Center bias"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text7" />
+
+    <!-- circular posiition
+         работает только в версии 1.1, поэтому пришлось включить ее в gradle
+         app:layout_constraintCircle="@id/text8"
+         app:layout_constraintCircleRadius="100dp"
+         app:layout_constraintCircleAngle="135" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="circular"
+        app:layout_constraintCircle="@id/text8"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintCircleAngle="135" />
+
+    <!-- Chain
+         app:layout_constraintHorizontal_chainStyle="packed" -->
+    <TextView style="@style/TextViewTheme"
+        android:id="@+id/text10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HeadChain"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/text9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/text11"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <TextView
+        android:id="@+id/text11"
+        style="@style/TextViewTheme"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:text="chain"
+        app:layout_constraintStart_toEndOf="@+id/text10"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/text9"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

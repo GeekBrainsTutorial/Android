@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="45dp" android:layout_y="150dp"
+        android:text="4" />
+    <Button
+        android:id="@+id/b5"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="145dp" android:layout_y="150dp"
+        android:text="5" />
+    <Button
+        android:id="@+id/b6"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="245dp" android:layout_y="150dp"
+        android:text="6" />
+    <Button
+        android:id="@+id/b7"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="45dp" android:layout_y="210dp"
+        android:text="7" />
+    <Button
+        android:id="@+id/b8"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="145dp" android:layout_y="210dp"
+        android:text="8" />
+    <Button
+        android:id="@+id/b0"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="145dp" android:layout_y="270dp"
+        android:text="0" />
+    <Button
+        android:id="@+id/b9"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="245dp" android:layout_y="210dp"
+        android:text="9" />
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="245dp" android:layout_y="80dp"
+        android:text="3" />
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="145dp" android:layout_y="80dp"
+        android:text="2" />
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_x="45dp" android:layout_y="80dp"
+        android:text="1" />
+</AbsoluteLayout>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.geekbrains.fragmentmanager.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent">
+        <TableLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_weight="0.5">
+            <TableRow
+                android:layout_width="match_parent" android:layout_height="match_parent" >
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:text="1" android:textSize="40dp"
+                        android:layout_width="wrap_content" android:layout_height="match_parent" />
+                    <Button
+                        android:id="@+id/add1"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/add" />
+                    <Button
+                        android:id="@+id/remove1"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/remove" />
+                    <Button
+                        android:id="@+id/replace1"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/replace" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent" android:layout_height="match_parent" >
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:text="2" android:textSize="40dp"
+                        android:layout_width="wrap_content" android:layout_height="match_parent" />
+                    <Button
+                        android:id="@+id/add2"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/add" />
+                    <Button
+                        android:id="@+id/remove2"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/remove" />
+                    <Button
+                        android:id="@+id/replace2"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/replace" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent" android:layout_height="match_parent" >
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:text="3" android:textSize="40dp"
+                        android:layout_width="wrap_content" android:layout_height="match_parent" />
+                    <Button
+                        android:id="@+id/add3"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/add" />
+                    <Button
+                        android:id="@+id/remove3"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/remove" />
+                    <Button
+                        android:id="@+id/replace3"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:text="@string/replace" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Назад" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_weight="2" android:layout_width="match_parent"
+            android:layout_height="0px">
+        </FrameLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
