@@ -1,11 +1,23 @@
 package ru.geekbrains.secondactivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK){
+            EditText num = (EditText)  findViewById(R.id.editText2);
+            num.setText(data.getStringExtra("Number"));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
