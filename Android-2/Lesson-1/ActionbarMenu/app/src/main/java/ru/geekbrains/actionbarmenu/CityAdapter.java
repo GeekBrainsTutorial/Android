@@ -1,53 +1,51 @@
 package ru.geekbrains.actionbarmenu;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.List;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     private List<String> dataSource;                         // Наш источник данных
-    private OnItemClickListener itemClickListener;  // Слушатель, будет устанавливаться извне
+    private GetterMenuInflater getterMenuInflater;
 
     // этот класс хранит связь между данными и элементами View
     // Сложные данные могут потребовать несколько View на
     // Один пункт списка.
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
         public TextView cityName;
 
         public ViewHolder(View v) {
             super(v);
             cityName = v.findViewById(R.id.city_name);
-
-            // обработчик нажатий на этом ViewHolder
-            cityName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (itemClickListener != null) {
-                        itemClickListener.onItemClick(v, getAdapterPosition());
-                    }
-                }
-            });
+            v.setOnCreateContextMenuListener(this);
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            MenuInflater inflater = getterMenuInflater.getContextMenuInflater();
+            inflater.inflate(R.menu.context_menu, menu);
+        }
+
+
     }
 
-    // интерфейс для обработки нажатий как в ListView
-    public interface OnItemClickListener {
-        void onItemClick(View view , int position);
-    }
-
-    // сеттер слушателя нажатий
-    public void SetOnItemClickListener(OnItemClickListener itemClickListener){
-        this.itemClickListener = itemClickListener;
+    // Надо получить
+    public interface GetterMenuInflater{
+        MenuInflater getContextMenuInflater();
     }
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
-    public CityAdapter(List<String> dataSource) {
+    public CityAdapter(List<String> dataSource, GetterMenuInflater getterMenuInflater) {
         this.dataSource = dataSource;
+        this.getterMenuInflater = getterMenuInflater;
     }
 
     @Override

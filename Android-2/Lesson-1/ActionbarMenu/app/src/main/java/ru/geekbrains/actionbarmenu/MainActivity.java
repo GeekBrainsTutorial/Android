@@ -7,15 +7,17 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CityAdapter.GetterMenuInflater {
 
     private RecyclerView recyclerView;
+    private CityAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,18 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Очистка списка", Toast.LENGTH_SHORT).show();
     }
 
+    public MenuInflater getContextMenuInflater(){
+        return getMenuInflater();
+    }
+
+    private void editElement(int position) {
+        Toast.makeText(this, String.format("Редактирование элемента %d", position), Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteElement(int position) {
+        Toast.makeText(this, String.format("Удаление элемента %d", position), Toast.LENGTH_SHORT).show();
+    }
+
     // Инициализация RecyclerView
     private void initRecyclerView(){
         recyclerView = findViewById(R.id.recycler_view);
@@ -77,15 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     // игнициализация адаптера
     private void initCityAdapter(List<String> dataSource){
-        CityAdapter adapter = new CityAdapter(dataSource);
+        adapter = new CityAdapter(dataSource, this);
         recyclerView.setAdapter(adapter);
-        final Context that = this;
-        // установить слушателя
-        adapter.SetOnItemClickListener(new CityAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(that, String.format("Позиция - %d", position), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }
