@@ -1,0 +1,39 @@
+apply from: "../config.gradle"
+
+def configuration = ext.configuration;
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+    buildToolsVersion configuration.buildToolsVersion
+    defaultConfig {
+        applicationId configuration.applicationId
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode buildVersionCode()
+        versionName buildVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    File fileProps = new File(project.property("MyProject.properties"))
+    if(fileProps.exists()) {
+
+        Properties props = new Properties()
+        props.load(new FileInputStream(fileProps))
+
+        signingConfigs {
+            release {
+                storeFile file(props['keystore'])
+                storePassword props['keystore.password']
+                keyAlias props['keyAlias']
+                keyPassword props['keyPassword']
+            }
+        }
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}

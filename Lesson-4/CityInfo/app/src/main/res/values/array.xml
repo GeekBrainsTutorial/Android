@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="coatofarms_imgs">
+        <item>@drawable/msc</item><!-- герб Москвы -->
+        <item>@drawable/spb</item><!-- герб Санкт-Петербурга -->
+        <item>@drawable/ebrg</item><!-- герб Екатеринбурга -->
+        <item>@drawable/nsk</item><!-- герб Новосибирска -->
+        <item>@drawable/sam</item><!-- герб Самары -->
+    </integer-array>
+
+</resources>
