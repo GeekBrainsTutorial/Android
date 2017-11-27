@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActionbarMenu</string>
+    <string name="menu_add">Добавить</string>
+    <string name="menu_clear">Очистить</string>
+</resources>
