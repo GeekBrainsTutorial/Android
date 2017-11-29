@@ -16,4 +16,19 @@
         android:id="@+id/action_search"
         android:orderInCategory="10"
         android:title="@string/action_search" />
+    <group
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/choice"
+            android:title="Выбор"/>
+    </group>
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/sort_name"
+            android:title="По имени"/>
+        <item
+            android:id="@+id/sort_date"
+            android:title="По дате"/>
+    </group>
 </menu>

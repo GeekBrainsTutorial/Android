@@ -56,6 +56,20 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(mainLayout, "Информация", Snackbar.LENGTH_LONG).show();
             return true;
         }
+        // Добавим обработку radiobutton
+        if(id == R.id.sort_date){
+            item.setChecked(true);
+            return true;
+        }
+        if(id == R.id.sort_name){
+            item.setChecked(true);
+            return true;
+        }
+        // Добавим обработку checkbox
+        if(id == R.id.choice){
+            item.setChecked(!item.isChecked());
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
