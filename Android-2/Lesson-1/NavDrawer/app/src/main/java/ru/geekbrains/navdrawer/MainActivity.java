@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,10 +81,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        int optionId = R.layout.content_main;
 
+        if (id == R.id.nav_camera) {
+
+        } else if (id == R.id.nav_gallery) {
+            optionId = R.layout.nav_gallery;
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -94,6 +97,10 @@ public class MainActivity extends AppCompatActivity
 
         }
 
+        ViewGroup parent = (ViewGroup) findViewById(R.id.content);
+        parent.removeAllViews();
+        View newContent = getLayoutInflater().inflate(optionId, parent, false);
+        parent.addView(newContent);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
