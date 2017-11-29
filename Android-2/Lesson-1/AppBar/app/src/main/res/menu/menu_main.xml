@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.geekbrains.appbar.MainActivity">
+    <item
+        android:id="@+id/action_info"
+        android:title="@string/info"
+        android:icon="@android:drawable/ic_menu_info_details"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="10"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
+        android:title="@string/action_search" />
+    <group
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/choice"
+            android:title="Выбор"/>
+    </group>
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/sort_name"
+            android:title="По имени"/>
+        <item
+            android:id="@+id/sort_date"
+            android:title="По дате"/>
+    </group>
+</menu>
