@@ -15,6 +15,9 @@
     <item
         android:id="@+id/action_search"
         android:orderInCategory="10"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
         android:title="@string/action_search" />
     <group
         android:checkableBehavior="all">
