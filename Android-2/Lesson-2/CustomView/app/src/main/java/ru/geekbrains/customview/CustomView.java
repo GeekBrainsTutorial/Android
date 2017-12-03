@@ -1,4 +1,3 @@
-
 package ru.geekbrains.customview;
 
 import android.content.Context;
@@ -8,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 // Кастомный элемент
@@ -18,6 +18,8 @@ public class CustomView extends View {
     private Paint paint;
     private int radius;
     private int color;
+    private boolean pressed = false;    // признак нажатости
+    View.OnClickListener listener;      // Слушатель
 
     public CustomView(Context context) {
         super(context);
@@ -97,6 +99,12 @@ public class CustomView extends View {
         Log.d(TAG, "onDraw");
         super.onDraw(canvas);
         canvas.drawCircle(radius, radius, radius, paint);
+        if(pressed){
+            canvas.drawCircle(radius, radius, radius/10, paint);
+        }
+        else {
+            canvas.drawCircle(radius, radius, radius, paint);
+        }
     }
 
     @Override
@@ -109,5 +117,27 @@ public class CustomView extends View {
     public void requestLayout() {
         Log.d(TAG, "requestLayout");
         super.requestLayout();
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        int Action = event.getAction();
+        if(Action == MotionEvent.ACTION_DOWN){ // нажали
+            pressed = true;
+            invalidate();           // Перерисовка элемента
+            if (listener != null) listener.onClick(this);
+        }
+        else if(Action == MotionEvent.ACTION_UP){ // отпустили
+            pressed = false;
+            invalidate();           // Перерисовка элемента
+        }
+        return true;
+    }
+
+    // установка слушателя
+    @Override
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
     }
 }
