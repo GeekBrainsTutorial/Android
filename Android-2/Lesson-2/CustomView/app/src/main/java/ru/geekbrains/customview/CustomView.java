@@ -1,6 +1,8 @@
+
 package ru.geekbrains.customview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,6 +17,7 @@ public class CustomView extends View {
     private final static String TAG = "CustomView";
     private Paint paint;
     private int radius;
+    private int color;
 
     public CustomView(Context context) {
         super(context);
@@ -24,20 +27,39 @@ public class CustomView extends View {
     // Вызывается при вставлении элемента в макет
     public CustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAttr(context, attrs);
         init();
     }
 
     // Вызывается при вставлении элемента в макет, если был добавлен стиль
     public CustomView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAttr(context, attrs);
         init();
     }
 
+    // Обработка параметров в xml
+    private void initAttr(Context context, AttributeSet attrs){
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0);
+        setRadius(typedArray.getResourceId(R.styleable.CustomView_cv_Radius, 100));
+        setColor(typedArray.getResourceId(R.styleable.CustomView_cv_Color, Color.BLUE));
+        typedArray.recycle();
+    }
+
+    // подготовка элемента
     private void init() {
         Log.d(TAG, "Constructor");
         paint = new Paint();
-        paint.setColor(Color.BLUE);
+        paint.setColor(color);
         paint.setStyle(Paint.Style.FILL);
+    }
+
+    public void setRadius(int radius){
+        this.radius = radius;
+    }
+
+    public void setColor(int color){
+        this.color = color;
     }
 
     @Override
@@ -74,7 +96,7 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         Log.d(TAG, "onDraw");
         super.onDraw(canvas);
-        canvas.drawCircle(200, 200, 200, paint);
+        canvas.drawCircle(radius, radius, radius, paint);
     }
 
     @Override
@@ -89,5 +111,3 @@ public class CustomView extends View {
         super.requestLayout();
     }
 }
-
-
