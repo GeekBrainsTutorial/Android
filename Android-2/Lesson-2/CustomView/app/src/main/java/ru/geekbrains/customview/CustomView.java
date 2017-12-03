@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
@@ -13,9 +14,26 @@ public class CustomView extends View {
 
     private final static String TAG = "CustomView";
     private Paint paint;
+    private int radius;
 
     public CustomView(Context context) {
         super(context);
+        init();
+    }
+
+    // Вызывается при вставлении элемента в макет
+    public CustomView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    // Вызывается при вставлении элемента в макет, если был добавлен стиль
+    public CustomView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
         Log.d(TAG, "Constructor");
         paint = new Paint();
         paint.setColor(Color.BLUE);
@@ -53,7 +71,7 @@ public class CustomView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas){
+    protected void onDraw(Canvas canvas) {
         Log.d(TAG, "onDraw");
         super.onDraw(canvas);
         canvas.drawCircle(200, 200, 200, paint);
@@ -66,7 +84,7 @@ public class CustomView extends View {
     }
 
     @Override
-    public void requestLayout(){
+    public void requestLayout() {
         Log.d(TAG, "requestLayout");
         super.requestLayout();
     }
