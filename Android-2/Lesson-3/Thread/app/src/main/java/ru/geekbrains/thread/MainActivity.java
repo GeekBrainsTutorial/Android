@@ -1,12 +1,11 @@
 package ru.geekbrains.thread;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,9 +19,19 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = Integer.toString(calculate());
+                final Handler handler = new Handler();
+                new Thread(new Runnable() {
+                    public void run() {
+                        final String result = Integer.toString(calculate());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                textView.setText(result);
+                            }
+                        });
+                    }
+                }).start();
                 textIndicator.setText("В главном потоке");
-                textView.setText(result);
             }
         });
     }
