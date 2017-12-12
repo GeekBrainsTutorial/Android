@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
                 .with(this)
                 .load("https://c1.staticflickr.com/1/186/31520440226_175445c41a_b.jpg")
                 .transform(new CircleTransformation())
+                .rotate(90)
                 .into(imageView);
     }
 }
