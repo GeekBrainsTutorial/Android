@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SQLite Example</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_clear">Clear</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit">Edit</string>
+    <string name="note">note</string>
+    <string name="title">title</string>
+    <string name="alert_cancel">Cancel</string>
+    <string name="alert_title_add">Add note</string>
+</resources>
+
