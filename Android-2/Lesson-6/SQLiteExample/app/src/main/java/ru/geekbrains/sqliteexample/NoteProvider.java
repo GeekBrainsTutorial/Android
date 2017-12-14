@@ -49,7 +49,7 @@ public class NoteProvider extends ContentProvider {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query(DatabaseHelper.TABLE_NOTES, projection, filter,
                 selectionArgs, null, null, sortOrder);
-        // Установим рнотификацию при изменении данных в CONTENT_URI
+        // Установим нотификацию при изменении данных в CONTENT_URI
         cursor.setNotificationUri(getContext().getContentResolver(), CONTENT_URI);
         return cursor;
     }
