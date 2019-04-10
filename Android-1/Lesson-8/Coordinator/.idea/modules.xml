@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Coordinator.iml" filepath="$PROJECT_DIR$/.idea/Coordinator.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coordinator.iml" filepath="$PROJECT_DIR$/Coordinator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
