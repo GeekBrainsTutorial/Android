@@ -38,19 +38,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState){
-        super.onSaveInstanceState(saveInstanceState);
-        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-        saveInstanceState.putInt("Counter", counter);               // Сохраняем счетчик
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle saveInstanceState){
-        super.onRestoreInstanceState(saveInstanceState);
-        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-        counter = saveInstanceState.getInt("Counter");              // Восстанавливаем счетчик
-        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик в поле
-    }
 }

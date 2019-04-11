@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
+    <EditText
         android:id="@+id/textCounter"
         android:layout_width="181dp"
         android:layout_height="57dp"
-        android:text="TextView"
-        android:textSize="48sp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        tools:layout_editor_absoluteX="195dp" /> <!-- новое поле -->
+        android:layout_marginRight="8dp"
+        android:enabled="false"
+        android:text="TextView"
+        android:textSize="36sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!-- новое поле -->
 
     <Button
         android:id="@+id/button"
