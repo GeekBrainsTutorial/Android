@@ -9,32 +9,30 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int counter = 0;       // Счетчик
-    private TextView textCounter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         String instanceState;
-        // первый запуск?
         if (savedInstanceState == null){
             instanceState = "Первый запуск!";
         }
         else{
             instanceState = "Повторный запуск!";
         }
-        // выведем, какой это запуск
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
-        textCounter = (TextView) findViewById(R.id.textCounter);    // Поле счетчика
-        textCounter.setText(((Integer)counter).toString());         // Выводим счетчик на экран
-        Button button = (Button) findViewById(R.id.button);         // Кнопка
-        button.setOnClickListener(new View.OnClickListener() {      // Обработка нажатий
+        final TextView textCounter = (TextView) findViewById(R.id.textCounter); // Текст
+        final MainPresenter presenter = MainPresenter.getInstance();
+        // Получить презентер
+        textCounter.setText(((Integer)presenter.getCounter()).toString());
+        // Выводим счетчик в поле
+        Button button = (Button) findViewById(R.id.button);     // Кнопка
+        button.setOnClickListener(new View.OnClickListener() {  // Обработка нажатий
             @Override
             public void onClick(View v) {
-                // Увеличим счетчик на 1 и выведем на экран
-                counter++;
-                textCounter.setText(((Integer)counter).toString());
+                presenter.incrementCounter();                   // Увеличиваем счетчик на единицу
+                textCounter.setText(((Integer)presenter.getCounter()).toString());  // Выводим счетчик в поле
             }
         });
     }
