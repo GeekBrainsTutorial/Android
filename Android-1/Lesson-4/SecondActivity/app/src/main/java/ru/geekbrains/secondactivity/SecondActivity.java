@@ -4,15 +4,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements Constants {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Toast.makeText(getApplicationContext(),"Second - onCreate()", Toast.LENGTH_SHORT).show();
+
+        String text = getIntent().getExtras().getString(TEXT); // получить данные из Intent
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(text); // Сохранить их в TextView
 
         Button backToFirstActivity = findViewById(R.id.buttonBack);
         backToFirstActivity.setOnClickListener(new View.OnClickListener() {

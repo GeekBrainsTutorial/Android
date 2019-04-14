@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         startSecondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText txt = MainActivity.this.findViewById(R.id.editText);
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                // Получить значение из EditText и сохранить его в интент
+                intent.putExtra(TEXT, txt.getText().toString());
                 startActivity(intent);
             }
         });
