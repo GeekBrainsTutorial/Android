@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +16,12 @@ public class SecondActivity extends AppCompatActivity implements Constants {
         setContentView(R.layout.activity_second);
         Toast.makeText(getApplicationContext(),"Second - onCreate()", Toast.LENGTH_SHORT).show();
 
-        String text = getIntent().getExtras().getString(TEXT); // получить данные из Intent
+        Parcel parcel = (Parcel) getIntent().getExtras().getSerializable(TEXT); // получить данные из Intent
         TextView textView = findViewById(R.id.textView);
-        textView.setText(text); // Сохранить их в TextView
+        EditText editText = findViewById(R.id.editText3);
+        textView.setText(parcel.text);         // Сохранить их в TextView
+        editText.setText(((Integer) parcel.number).toString());
+
 
         Button backToFirstActivity = findViewById(R.id.buttonBack);
         backToFirstActivity.setOnClickListener(new View.OnClickListener() {

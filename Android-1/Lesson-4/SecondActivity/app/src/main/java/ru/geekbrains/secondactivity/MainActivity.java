@@ -21,9 +21,15 @@ public class MainActivity extends AppCompatActivity implements Constants {
             @Override
             public void onClick(View v) {
                 EditText txt = MainActivity.this.findViewById(R.id.editText);
+                EditText num = findViewById(R.id.editText2);
+                Parcel parcel = new Parcel();
+                parcel.text = txt.getText().toString();
+                parcel.number = Integer.parseInt(num.getText().toString());
+                // Посылка сформирована, отправляем
+
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 // Получить значение из EditText и сохранить его в интент
-                intent.putExtra(TEXT, txt.getText().toString());
+                intent.putExtra(TEXT, parcel);
                 startActivity(intent);
             }
         });
