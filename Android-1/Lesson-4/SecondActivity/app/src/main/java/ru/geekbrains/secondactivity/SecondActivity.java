@@ -1,5 +1,6 @@
 package ru.geekbrains.secondactivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,10 @@ public class SecondActivity extends AppCompatActivity implements Constants {
         backToFirstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText editText = (EditText) findViewById(R.id.editText3);
+                Intent intentResult = new Intent();
+                intentResult.putExtra("Number", editText.getText().toString());
+                setResult(RESULT_OK, intentResult);
                 finish();
             }
         });

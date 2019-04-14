@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Constants {
 
+    private final static int REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +32,22 @@ public class MainActivity extends AppCompatActivity implements Constants {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 // Получить значение из EditText и сохранить его в интент
                 intent.putExtra(TEXT, parcel);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK){
+            EditText num = findViewById(R.id.editText2);
+            num.setText(data.getStringExtra("Number"));
+        }
     }
 
     @Override
