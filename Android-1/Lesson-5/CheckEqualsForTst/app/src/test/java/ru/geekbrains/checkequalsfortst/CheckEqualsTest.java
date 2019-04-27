@@ -23,4 +23,11 @@ public class CheckEqualsTest {
         String actual = checkEquals.Compare(2, 3);
         assertEquals("Не равно!", actual);
     }
+
+    @Test
+    public void CheckEquals_Compare_BigValueTest() {
+        CheckEquals checkEquals = new CheckEquals();
+        String actual = checkEquals.Compare(2000, 2000);
+        assertEquals("Равно!", actual);
+    }
 }
