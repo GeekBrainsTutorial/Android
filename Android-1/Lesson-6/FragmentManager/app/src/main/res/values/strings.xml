@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FragmentManager</string>
+    <string name="add">Добавить</string>
+    <string name="remove">Удалить</string>
+    <string name="replace">Заменить</string>
+    <string name="fragment1">Фрагмент1</string>
+    <string name="fragment2">Фрагмент2</string>
+    <string name="fragment3">Фрагмент3</string>
+</resources>
