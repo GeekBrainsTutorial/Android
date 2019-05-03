@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/add1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/add" />
+
+            <Button
+                android:id="@+id/remove1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/remove" />
+
+            <Button
+                android:id="@+id/replace1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/replace" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="2"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/add2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/add" />
+
+            <Button
+                android:id="@+id/remove2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/remove" />
+
+            <Button
+                android:id="@+id/replace2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/replace" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="3"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/add3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/add" />
+
+            <Button
+                android:id="@+id/remove3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/remove" />
+
+            <Button
+                android:id="@+id/replace3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/replace" />
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
