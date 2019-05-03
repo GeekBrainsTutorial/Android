@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -98,6 +104,12 @@
                 android:text="@string/replace" />
         </TableRow>
     </TableLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back stack" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

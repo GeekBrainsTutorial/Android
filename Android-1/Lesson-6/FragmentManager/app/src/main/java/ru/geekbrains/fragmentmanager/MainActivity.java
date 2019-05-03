@@ -1,11 +1,13 @@
 package ru.geekbrains.fragmentmanager;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import ru.geekbrains.fragmentmanager.fragments.Fragment1;
 import ru.geekbrains.fragmentmanager.fragments.Fragment2;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment1 fragment1;
     Fragment2 fragment2;
     Fragment3 fragment3;
+    CheckBox isBackstack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
         replace2.setOnClickListener(new ListenerOnReplace(fragment2));
         Button replace3 = findViewById(R.id.replace3);
         replace3.setOnClickListener(new ListenerOnReplace(fragment3));
+
+        isBackstack = findViewById(R.id.checkBox);
+
+        // Обработка нашей кнопки "Назад"
+        Button back = (Button)findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.popBackStack();
+            }
+        });
     }
 
     // При написании анонимного класса слушателя кнопки было замечено, что при этом возникает
@@ -76,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             // Добавить фрагмент
             fragmentTransaction.add(R.id.fragment_container, fragment);
+            // Добавить фрагмент в стек обратного вызова
+            if (isBackstack.isChecked()) {
+                fragmentTransaction.addToBackStack("");
+            }
             // Закрыть транзакцию
             fragmentTransaction.commit();
         }
@@ -96,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
         private void removeFragment(){
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.remove(fragment);
+            if (isBackstack.isChecked()) {
+                fragmentTransaction.addToBackStack("");
+            }
             fragmentTransaction.commit();
         }
     }
@@ -116,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         private void replaceFragment(){
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
+            if (isBackstack.isChecked()) {
+                fragmentTransaction.addToBackStack("");
+            }
             fragmentTransaction.commit();
         }
     }
