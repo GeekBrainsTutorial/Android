@@ -78,21 +78,26 @@ public class CitiesFragment extends Fragment {
         LinearLayout layoutView = (LinearLayout)view;
         String[] cities = getResources().getStringArray(R.array.cities);
 
+        // При помощи этого объекта будем доставать элементы, спрятанные в item.xml
+        LayoutInflater ltInflater = getLayoutInflater();
+
         // В этом цикле создаем элемент TextView,
         // заполняем его значениями,
         // и добавляем на экран.
         // Кроме того, создаем обработку касания на элемент
         for(int i=0; i < cities.length; i++){
             String city = cities[i];
-            TextView tv = new TextView(getContext());
+            // Достаем элемент из item.xml
+            View item = ltInflater.inflate(R.layout.item, layoutView, false);
+            // Находим в этом элементе TextView
+            TextView tv = item.findViewById(R.id.textView);
             tv.setText(city);
-            tv.setTextSize(30);
-            layoutView.addView(tv);
+            layoutView.addView(item);
             final int fi = i;
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //+ Теперь опираемся на Parcel, а не на текущую позицию
+                    // опираемся на Parcel, а не на текущую позицию
                     currentParcel = new Parcel(fi, getResources().getStringArray(R.array.cities)[fi]);
                     showCoatOfArms(currentParcel);
                 }
